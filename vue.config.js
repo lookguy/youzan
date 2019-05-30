@@ -9,25 +9,25 @@ const titles = {
 }
 
 glob.sync('./src/pages/**/main.js').forEach(path => {
-  const pageName = path.split('./src/pages/')[1].split('/main.js')[0]
+  let pageName = path.split('./src/pages/')[1].split('/main.js')[0]
   pages[pageName] = {
     entry: path,
+    template: 'public/index.html',
     filename: pageName + '.html',
-     // If doesn't exist, fallback to 'public/index.html'
-    template: pageName + '.html',
     title: titles[pageName],
     chunks: ['chunk-vendors', 'chunk-common', pageName],
   }
 })
 
-const isDev = (process.env.NODE_ENV === 'development')
 
 /*
 *  https://www.jianshu.com/p/e4716e5bc8bb(路径)
 */
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/dist/'
+    : '/',
   pages,
-  productionSourceMap: isDev,
   runtimeCompiler: true,
   chainWebpack: (config)=>{
     config
