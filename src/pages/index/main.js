@@ -1,26 +1,51 @@
-import 'css/common.css';
-import './index.css';
-
 import Vue from 'vue';
-import Contents from './index.vue'
+// import Contents from './index.vue'
 import axios from 'axios'
 import url from 'js/api.js'
-console.log(Vue)
+
+import 'css/common.css';
+import './index.css';
+import { List } from 'vant';
+
+Vue.use(List);
 
 new Vue({
     created(){
-        axios.get(url.hotList,{
-            pageNum: 1,
-            pageSize: 6
-        })
-        .then(res=>{
-            this.lists = res.data.lists
-        })
+        this.onLoad()
     },
-    el: '#app',
+    el: '.index',
     data: {
         lists: null,
-        title: '有店推荐'
+        loading: false,
+        finished: false,
+        error: false,
+        pageNum: 1,
     },
-    render: h => h(Contents),
+    methods: {
+        onLoad() {
+            this.loading = true
+            setTimeout(() => {
+                axios.get(url.hotList,{
+                    pageNum: this.pageNum++,
+                    pageSize: 4
+                })
+                .then(res=>{
+                    let curLists = res.data.lists
+                    if(this.lists){
+                        if(this.pageNum>5){this.finished = true}
+                        this.lists = this.lists.concat(curLists)
+                    }else{
+                        //frist data
+                        this.lists = curLists
+                    }
+                })
+                .catch(()=>{
+                    this.error = true;
+                })
+                .finally(()=>{
+                    this.loading = false
+                })
+            }, 500);
+        }
+      }
 })

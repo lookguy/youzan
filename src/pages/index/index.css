@@ -1033,46 +1033,42 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .hot-goods {
-  overflow: hidden
-}
-
-.hot-goods ul {
   position: relative;
   padding: 0 6px;
-  zoom: 1
+  zoom: 1;
 }
 
-.hot-goods ul:after {
+.hot-goods:after {
   content: "";
   display: table;
   clear: both
 }
 
-.hot-goods li {
+.hot-goods .hotgood-item {
   float: left;
   width: 50%;
   box-sizing: border-box;
   padding-bottom: 6px
 }
 
-.hot-goods li:nth-child(odd) {
+.hot-goods .hotgood-item:nth-child(odd) {
   padding-right: 3px
 }
 
-.hot-goods li:nth-child(2n) {
+.hot-goods .hotgood-item:nth-child(2n) {
   padding-left: 3px
 }
 
-.hot-goods li .goods-item .thumb {
+.hot-goods .hotgood-item .goods-item .thumb {
   margin-bottom: 10px;
   background-color: #fff
 }
 
-.hot-goods li .goods-item .detail {
+.hot-goods .hotgood-item .goods-item .detail {
   padding: 0 8px 1px
 }
 
-.hot-goods li .goods-item .title {
+.hot-goods .hotgood-item .goods-item .title {
   color: #666;
   padding-bottom: 0;
   line-height: 16px;

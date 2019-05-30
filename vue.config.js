@@ -12,11 +12,12 @@ glob.sync('./src/pages/**/main.js').forEach(path => {
   let pageName = path.split('./src/pages/')[1].split('/main.js')[0]
   pages[pageName] = {
     entry: path,
-    template: 'public/index.html',
     filename: pageName + '.html',
+    template: `./src/pages/${pageName}/${pageName}.html`,
     title: titles[pageName],
     chunks: ['chunk-vendors', 'chunk-common', pageName],
   }
+  console.log(pages[pageName])
 })
 
 
