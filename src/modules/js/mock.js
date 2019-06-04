@@ -6,6 +6,8 @@ let url = {
     topList: '/category/topList',
     rank: '/category/rank',
     subList: '/category/subList',
+    search: '/search/list',
+    details: '/goods/details'
 }
 
 Mock.mock(/http:\/\/rap2api\.taobao\.org\/app\/mock\/7058/,function(opt){
@@ -160,6 +162,54 @@ Mock.mock(/http:\/\/rap2api\.taobao\.org\/app\/mock\/7058/,function(opt){
                   ]
                 }
               })
+        case url.search:
+          return Mock.mock({
+            "status": 200,
+            "message": "ok",
+            "lists|8":[{
+              "id|10000-99999": 1,
+              "img": "@image(320x320,@color)",
+              "name": "@ctitle",
+              "price|1-100.2-2": 1,
+              "isOut|1-2": true,
+              "isPostage|1": false
+            }]
+          })
+        case url.details:
+          return Mock.mock(
+            {
+              "data": {
+                "imgs": [
+                  "http://dummyimage.com/375x375/f2a879",
+                  "http://dummyimage.com/375x375/79d7f2",
+                  "http://dummyimage.com/375x375/bef279"
+                ],
+                "originalPrice|100-999": 1,
+                "postage": "免运费",
+                "price|5-99": 1,
+                "sales|500-800": 1,
+                "title": "寻找田野|最正宗的上海南汇8424 得奖最多奥运会指定西瓜1只/箱 9-11斤",
+                "storeName": "寻找田野",
+                "skuList|2": [
+                  {
+                    "lists": [
+                      "1个",
+                      "2个"
+                    ],
+                    "title": "@order('净含量','个数')"
+                  }
+                ],
+                "remain|100-400": 1,
+                "identification": [
+                  "企业认证",
+                  "担保交易"
+                ],
+                "description": "<div class=\"js-components-container components-container\"> <div class=\"custom-richtext js-lazy-container js-view-image-list\"> <p><img data-origin-width=\"720\" data-origin-height=\"713\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FhU7lMPonHtR8qP4zP4aIKRVkObr.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FhU7lMPonHtR8qP4zP4aIKRVkObr.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"494\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FvYqk840X0ubXwFE6Nh0unihqIKm.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FvYqk840X0ubXwFE6Nh0unihqIKm.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"916\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FvIfNYewmohf3b3V2yA_hr6whV-A.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FvIfNYewmohf3b3V2yA_hr6whV-A.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"656\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FlYJPxbAgmkKjWtvLxwqjUMJHUG3.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FlYJPxbAgmkKjWtvLxwqjUMJHUG3.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"513\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FmpaiyW8GbpV2I2QKwm7stoRQkOJ.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FmpaiyW8GbpV2I2QKwm7stoRQkOJ.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"691\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/Fs5rqsKzMe7qIHhuQAqyM1lcjmfB.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/Fs5rqsKzMe7qIHhuQAqyM1lcjmfB.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"531\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/Foor6_Ipc-Lo9eOX_H_a8g4kWPRW.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/Foor6_Ipc-Lo9eOX_H_a8g4kWPRW.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"932\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FuuNBFbA_vMYmI6FFbNOemmDX9bd.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FuuNBFbA_vMYmI6FFbNOemmDX9bd.jpg!730x0.jpg\"> <img data-origin-width=\"720\" data-origin-height=\"707\" class=\"js-richtext-img-lazy js-view-image-item\" src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FotgIfOUlMtvhtH0dhRLlmpKJLv7.jpg?imageView2/2/w/730/h/0/q/75/format/webp\" data-src=\"https://img.yzcdn.cn/upload_files/2017/05/15/FotgIfOUlMtvhtH0dhRLlmpKJLv7.jpg!730x0.jpg\"></p> </div> <div class=\"price-intro\"> <h4>划线价格说明<i class=\"icon-arrow\"></i></h4> <p>划线价格：划线的价格可能是商品的专柜价、吊牌价、正品零售价、指导价、曾经展示过的销售价等，仅供您参考。</p> <p>未划线价格：未划线的价格是商品的销售标价，具体的成交价格可能因会员使用优惠券、积分等发生变化，最终以订单结算价格为准。 </p> <p>*此说明仅当出现价格比较时有效。若这件商品针对划线价格进行了特殊说明，以特殊说明为准。</p> </div> </div>"
+              },
+              "message": "",
+              "status": 200
+            }
+          )
         default:
             return Mock.mock({msg:"无相关接口"});
     }

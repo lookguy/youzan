@@ -3,6 +3,7 @@ import Vue from 'vue';
 import axios from 'axios'
 import url from 'js/api.js'
 import qs from 'qs'
+import 'js/mock.js'
 import mixin from 'js/mixin'
 
 import 'css/common.css';
@@ -24,11 +25,11 @@ new Vue({
         getSearchList(){
             axios.get(url.search,{keyword,id})
             .then(res=>{
+                console.log(res)
                 this.searchList = res.data.lists
             })
         },
         move(){
-            console.log(1)
             if(document.body.scrollTop> 100 || document.documentElement.scrollTop > 100){
                 this.isShow = true
             }else{
