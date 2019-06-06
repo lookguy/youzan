@@ -1,4 +1,6 @@
-
+  .custom_l {
+    margin: 50% auto;
+  }
   .custom-image img,
   .custom-image-swiper .swiper-slide a img {
     max-width: 100%;
