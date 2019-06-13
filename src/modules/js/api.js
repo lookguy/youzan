@@ -6,7 +6,12 @@ let url = {
     subList: '/category/subList',
     search: '/search/list',
     details: '/goods/details',
-    deals: '/goods/deal'
+    deals: '/goods/deal',
+    addCart: '/cart/add',
+    cartLists: '/cart/list',
+    cartreduce: '/cart/reduce',
+    cartRemove:'/cart/remove',
+    cartMremove: '/cart/mremove',
 }
 
 let host = 'http://rap2api.taobao.org/app/mock/7058'

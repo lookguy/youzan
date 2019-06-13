@@ -243,7 +243,6 @@
     margin-top: 0
   }
   
-  @charset "UTF-8";
   .custom-store {
     position: relative;
     padding: 10px;
@@ -333,7 +332,6 @@
     }
   }
   
-  @charset "UTF-8";
   .sc-goods-list.pic .goods-card.big-pic.card .link,
   .sc-goods-list.pic .goods-card.small-pic.card .link,
   .sc-goods-list.pic .goods-card.small-pic.promotion .link,
@@ -1389,7 +1387,6 @@
     line-height: 1.5
   }
   
-  @charset "UTF-8";
   .share-mp-info,
   .share-mp-info a,
   .share-mp-info em,

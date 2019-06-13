@@ -1,7 +1,8 @@
 import Vue from 'vue';
-// import Contents from './index.vue'
-// import axios from 'axios'
-// import url from 'js/api.js'
+import mixin from "js/mixin.js"
+import axios from "axios"
+import url from "js/api.js"
+import 'js/mock.js'
 
 // import 'css/common.css';
 import './cart_base.css';
@@ -13,17 +14,33 @@ import { List } from 'vant';
 Vue.use(List);
 
 new Vue({
-    created(){
-        this.onLoad();
-        this.getBanner();
+    created() {
+        this.getList()
     },
     el: '#app',
+    computed: {
+
+    },
     data: {
         lists: null,
-        loading: false,
-        finished: false,
-        error: false,
-        pageNum: 1,
-        bannerLists: null
     },
+    methods: {
+        getList() {
+            axios.get(url.cartLists)
+                .then(res => {
+                    let lists = res.data.cartList
+                    lists.forEach(shop => {
+                        shop.checked = true
+                        shop.goodsList.forEach(good => {
+                            good.checked = true
+                        })
+                    });
+                    this.lists = lists
+                })
+        },
+        selectGood(good) {
+            good.checked = !good.checked
+        }
+    },
+    mixins: [mixin]
 })
