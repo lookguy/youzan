@@ -33,7 +33,8 @@
               <div class="block block-order block-cart" v-for="(shop, shopIndex) in lists">
                 <div class="header">
                   <div class="select-group js-select-group" @click="selectShop(shop)">
-                    <span class="check" :class="{checked:shop.checked}"></span>
+                    <span class="check" :class="{checked:shop.checked}" v-show="!editingShop"></span>
+                    <span class="check" :class="{checked:shop.removeChecked}" v-show="editingShop"></span>
                   </div>
                   <a class="shop-title">
                     <i class="custom-store-img">店铺：</i>{{shop.shopTitle}}
@@ -47,17 +48,23 @@
                 <div>
                   <ul class="js-list block block-list block-list-cart border-0">
                     <li class="block-item block-item-cart" :class="{editing:shop.editing}"
+                      :ref="'goods-'+shopIndex+'-'+goodIndex"
+                      @touchstart="start($event,good)"
+                      @touchend="end($event,shopIndex,good,goodIndex)"
+                      style="transition: all .1s"
+                      :key="good.id"
                       v-for="(good, goodIndex) in shop.goodsList">
                       <div>
                         <div class="check-container" @click="selectGood(shop,good)">
-                          <span class="check" :class="{checked:good.checked}"></span></div>
+                          <span class="check" :class="{checked:editingShop?good.removeChecked:good.checked}"></span>
+                        </div>
                         <div class="name-card clearfix">
                           <a :href="'goods.html?id='+good.id" class="thumb js-goods-link">
                             <img class="js-lazy" :src="good.img">
                           </a>
                           <div class="detail">
                             <a class="js-goods-link">
-                              <h3 class="title js-ellipsis"><i>{{shop.title}}</i></h3>
+                              <h3 class="title js-ellipsis"><i>{{good.title}}</i></h3>
                             </a>
                             <p class="sku ellipsis">
                               {{good.sku}}
@@ -69,13 +76,12 @@
                             </div>
                             <!-- 编辑状态 -->
                             <div class="num" v-show="shop.editing">
-
                               <div class="quantity">
-                                <button type="button" class="minus disabled"></button>
+                                <button type="button" class="minus" :class="{disabled:good.number===1}"></button>
                                 <input type="text" pattern="[0-9]*" class="txt" v-model="good.number">
                                 <button type="button" class="plus "></button>
-                                <div class="response-area response-area-minus"></div>
-                                <div class="response-area response-area-plus"></div>
+                                <div class="response-area response-area-minus" @click="reduce(good)"></div>
+                                <div class="response-area response-area-plus" @click="add(good)"></div>
                               </div>
                             </div>
                             <div class="price c-orange">
@@ -83,7 +89,7 @@
                           </div>
                           <div class="error-box"></div>
                         </div>
-                        <div class="delete-btn"><span>删除</span></div>
+                        <div class="delete-btn" @click="remove(shop,shopIndex,good,goodIndex)"><span>删除</span></div>
                       </div>
                     </li>
                   </ul>
@@ -137,21 +143,21 @@
                 你需要分开结算每个店铺的商品哦~
               </div>
               <div class="bottom-cart clear-fix">
-                <div class="select-all" @click="selectAll"><span class="check" :class="{checked: allSelected}"></span>
+                <div class="select-all" @click="selectAll"><span class="check" :class="{checked: editingShop?allRemoveSelected:allSelected}"></span>
                   全选
                 </div>
                 <!-- 显示状态 -->
-                <div class="total-price">
-                  合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);" v-cloak>{{total | format}}</span>
+                <div class="total-price" v-show="!editingShop">
+                  合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);">{{total | format}}</span>
                   <p class="c-gray-dark">不含运费</p>
                 </div>
                 <button href="javascript:;" class="js-go-pay btn btn-orange-dark font-size-14"
-                  v-show="editingShop"
+                  v-show="!editingShop"
                   :disabled="!selectLists.length">
                   结算 (3)
                 </button>
                 <!-- 编辑状态 -->
-                <button href="javascript:;" :disabled="false" class="j-delete-goods btn font-size-14 btn-red" v-show="editingShop">
+                <button @click="deleteAll" href="javascript:;" :disabled="!removeLists.length" class="j-delete-goods btn font-size-14 btn-red" v-show="editingShop">
                   删除
                 </button>
               </div>
@@ -161,13 +167,13 @@
       </div>
     </div>
   </div>
-  <div class="footer" style="min-height: 86px;">
+  <!-- <div class="footer" style="min-height: 86px;">
     <div class="copyright">
       <div class="ft-copyright "
         style="background-image: url(https://img.yzcdn.cn/upload_files/2016/11/15/147918630760182374.png);">
         <a class="yz-logo" href="https://www.youzan.com/?from_source=support_logo">有赞提供技术支持</a> </div>
     </div>
-  </div>
+  </div> -->
 </body>
 
 </html>

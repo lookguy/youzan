@@ -11,7 +11,7 @@ let url = {
     cartLists: '/cart/list',
     cartreduce: '/cart/reduce',
     cartRemove:'/cart/remove',
-    cartMremove: '/cart/mremove',
+    cartMremove: '/cart/mrremove',
 }
 
 let host = 'http://rap2api.taobao.org/app/mock/7058'
