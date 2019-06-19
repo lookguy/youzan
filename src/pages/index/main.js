@@ -1,10 +1,9 @@
 import Vue from 'vue';
-// import Contents from './index.vue'
 import axios from 'axios'
 import url from 'js/api.js'
 import Foot from 'components/Foot.vue'
 import Banner from 'components/Swiper.vue'
-import 'js/mock.js'
+// import 'js/mock.js'
 
 import 'css/common.css';
 import './index.css';
@@ -60,8 +59,8 @@ new Vue({
         getBanner(){
             axios.get(url.banner)
             .then(res=>{
+                console.log(res)
                 this.bannerLists = res.data.lists
-                console.log(this.bannerLists)
             })
         }
     }
