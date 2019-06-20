@@ -23,26 +23,24 @@
 </template>
 
 <script>
-import Address from "js/addressService.js";
 export default {
-  data() {
-    return {
-      lists: null
-    };
+  computed: {
+    lists() {
+      return this.$store.state.lists;
+    }
   },
   created() {
-    Address.list().then(res => {
-      console.log(res);
-      this.lists = res.data.lists;
-    });
+    if (!this.lists) {
+      this.$store.dispatch("getLists");
+    }
   },
   methods: {
     toEdit(list) {
       this.$router.push({
         name: "form",
-        query:{
-            type: 'edit',
-            instance: list
+        query: {
+          type: "edit",
+          instance: list
         }
       });
     }
