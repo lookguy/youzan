@@ -1,5 +1,5 @@
 # vue-yz
-
+针对过去的有赞商城源码的重构，侧重点在首页，分类页，购物车和个人中心的地址管理。
 ## Project setup
 ```
 yarn install
@@ -25,6 +25,6 @@ yarn run test
 yarn run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 你可以在这个页面浏览结果
+点击进入 [商城](https://lookguy.github.io/youzan_demo/).
 # youzan
