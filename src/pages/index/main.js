@@ -3,7 +3,7 @@ import axios from 'axios'
 import url from 'js/api.js'
 import Foot from 'components/Foot.vue'
 import Banner from 'components/Swiper.vue'
-// import 'js/mock.js'
+import 'js/mock.js'
 
 import 'css/common.css';
 import './index.css';

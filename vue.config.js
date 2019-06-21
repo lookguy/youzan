@@ -26,7 +26,7 @@ glob.sync('./src/pages/**/main.js').forEach(path => {
 */
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/dist/'
+    ? '/youzan_demo/'
     : '/',
   pages,
   runtimeCompiler: true,
