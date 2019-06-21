@@ -1,5 +1,5 @@
 // vue.config.js
-const path = require('path');
+const Path = require('path');
 const glob = require('glob');
 
 const pages = {}
@@ -33,9 +33,9 @@ module.exports = {
   chainWebpack: (config)=>{
     config
       .resolve.alias
-        .set('@', path.join(__dirname, 'src'))
-        .set('css', path.join(__dirname, 'src/modules/css'))
-        .set('js', path.join(__dirname, 'src/modules/js'))
-        .set('components', path.join(__dirname, 'src/components'))
+        .set('@', Path.join(__dirname, 'src'))
+        .set('css', Path.join(__dirname, 'src/modules/css'))
+        .set('js', Path.join(__dirname, 'src/modules/js'))
+        .set('components', Path.join(__dirname, 'src/components'))
   }
 }
